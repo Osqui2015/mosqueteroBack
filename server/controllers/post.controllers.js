@@ -91,3 +91,12 @@ export const removePost = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+export const getFeaturedPosts = async (req, res) => {
+  try {
+    const posts = await Post.find({state:"Si"});    
+    return res.json(posts);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};

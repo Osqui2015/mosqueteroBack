@@ -5,6 +5,7 @@ import {
   updatePost,
   removePost,
   getPosts,
+  getFeaturedPosts,
 } from "../controllers/post.controllers.js";
 
 const router = Router();
@@ -18,5 +19,10 @@ router.post("/posts", createPost);
 router.put("/posts/:id", updatePost);
 
 router.delete("/posts/:id", removePost);
+
+router.get("/featured-posts", getFeaturedPosts);
+
+
+
 
 export default router;
