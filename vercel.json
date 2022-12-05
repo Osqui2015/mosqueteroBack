@@ -3,14 +3,14 @@
   "name": "Shows-album",
   "builds": [
     {
-      "src": "/server/index.js",
+      "source": "/server/index.js",
       "use": "@now/node"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "/server/index.js"
+      "source": "/(.*)",
+      "destination": "/server/index.js"
     }
   ]
 }
