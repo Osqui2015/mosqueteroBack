@@ -4,7 +4,9 @@ import fs from "fs-extra";
 // search all file
 export const getPosts = async (req, res) => {
   try {
-    const posts = await Post.find({});
+    const q = new RegExp(req.query.query ,"i") ;
+    
+    const posts = await Post.find({$or: [{artist: q}, {show: q}] });
     return res.json(posts);
   } catch (error) {
     return res.status(500).json({ message: error.message });

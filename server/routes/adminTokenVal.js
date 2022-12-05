@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 
 // middleware para validar el token
 
-const tokenValidation = (req, res, next) => {
+const adminTokenVal = (req, res, next) => {
 
   const token = req.header('auth-token');
 
@@ -12,13 +12,19 @@ const tokenValidation = (req, res, next) => {
   try {
     const verified = jwt.verify(token, process.env.TOKEN_SECRET);
     req.user = verified;
+
+    const decodedToken = jwt.decode(token, { complete: true });
+
+    if (decodedToken.role !== 'admin'){
+      res.status(400).json({ error: true, message: 'Acceso No Admin' });
+    }
+
     next();
   } catch (error) {
-      es.status(400).json({ error: true, message: 'Acceso DENEGADO 2' });
+    res.status(400).json({ error: true, message: 'Acceso DENEGADO 2' });
   }
-
 };
 
 
 
-export default tokenValidation;
+export default adminTokenVal;

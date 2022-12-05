@@ -119,7 +119,6 @@ router
     const token = req.header('auth-token');
     const decodedToken = jwt.decode(token, { complete: true });
 
-    // chequeo previamente si el user es el super usuario para no borrarlo nunca
     const SUPER_USER = process.env.SUPER_USER || 'admin';
 
     if (body.username === SUPER_USER || !decodedToken.payload.role === 'admin') {
