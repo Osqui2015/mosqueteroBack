@@ -22,5 +22,4 @@ router.delete("/posts/:id",  removePost);
 
 router.get("/featured-posts", getFeaturedPosts);
 
-
 export default router;
