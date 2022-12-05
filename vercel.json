@@ -3,14 +3,14 @@
   "name": "Shows-album",
   "builds": [
     {
-      "src": "./server/index.js",
-      "use": "@vercel/node"
+      "src": "server/index.js",
+      "use": "@now/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "./server/index.js"
+      "dest": "server/index.js"
     }
   ]
 }
