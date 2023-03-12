@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-// middleware para validar el token
+
 
 const tokenValidation = (req, res, next) => {
 

@@ -21,12 +21,12 @@ if (!userFound) {
       role: 'admin',
     });
     await newUser.save();
-    console.log('SUPER USER CREATED! ' + newUser.username);
+    
   } catch (error) {
-    console.log('Error trying to create a new SUPER USER', error);
+    
   }
 } else {
-  console.log('SUPER USER already exists');
+  
 }
 
 process.exit();
