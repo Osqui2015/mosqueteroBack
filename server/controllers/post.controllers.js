@@ -1,7 +1,7 @@
 import Post from "../models/Post.js";
 import fs from "fs-extra";
 
-// search all file
+
 export const getPosts = async (req, res) => {
   try {
     const q = new RegExp(req.query.query ,"i") ;
@@ -13,7 +13,6 @@ export const getPosts = async (req, res) => {
   }
 };
 
-// add file
 export const createPost = async (req, res) => {
   try {
     const { artist,
@@ -35,7 +34,6 @@ export const createPost = async (req, res) => {
   }
 };
 
-// search one file
 export const getPost = async (req, res) => {
   try {
     const { id } = req.params;
@@ -47,17 +45,17 @@ export const getPost = async (req, res) => {
   }
 };
 
-// upload on file
+
 export const updatePost = async (req, res) => {
   try {
     const { id } = req.params;
-    // TODO: validate req.body before to update
+ 
 
-    // if a new image is uploaded upload it to cloudinary
+    
     if (req.files?.image) {
       const result = await uploadImage(req.files.image.tempFilePath);
       await fs.remove(req.files.image.tempFilePath);
-      // add the new image to the req.body
+      
       req.body.image = {
         url: result.secure_url,
         public_id: result.public_id,
@@ -77,7 +75,7 @@ export const updatePost = async (req, res) => {
   }
 };
 
-//delete file
+
 export const removePost = async (req, res) => {
   try {
     const { id } = req.params;

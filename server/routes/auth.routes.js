@@ -17,7 +17,7 @@ router
     if (!body.username || !body.password) {
       return res.status(400).json({
         error: true,
-        message: 'The message has EMPTY fields.',
+        message: 'El mensaje tiene campos vacios.',
       });
     }
 
@@ -28,7 +28,7 @@ router
     if (!user) {
       return res.status(400).json({
         error: true,
-        message: 'The message has WRONG information.',
+        message: 'El mensaje tiene informacion equivocada.',
       });
     }
 
@@ -60,14 +60,14 @@ router
 
       return res.header('auth-token', token).status(200).json({
         error: null,
-        message: 'Credentials are OK',
+        message: 'Credenciales ok',
         role: user.role,
         data: { token },
       });
     } else {
       return res.status(400).json({
         error: true,
-        message: 'Credentials are WRONG',
+        message: 'Credenciales erroneas.',
       });
     }
   })
@@ -78,7 +78,7 @@ router
     if (!body.username || !body.password || !body.email) {
       return res.status(400).json({
         error: true,
-        message: 'The message has EMPTY fields.',
+        message: 'El mensaje tiene campos vacios .',
       });
     }
 
@@ -91,7 +91,7 @@ router
     if (newUserNameExist || newUserMailExist) {
       return res.status(400).json({
         error: true,
-        message: 'User or email already EXISTS',
+        message: 'Usuario o email ya existentes.',
       });
     }
 
@@ -108,7 +108,7 @@ router
       await newUser.save();
       res.status(200).json(newUser);
     } catch (error) {
-      console.log(error);
+      
       res.status(400).json({ error: true, message: error });
     }
   })
@@ -138,7 +138,7 @@ router
       );
       res.status(200).json(modUser);
     } catch (error) {
-      console.log(error);
+      
       res.status(404).json({
         error: true,
         message: error,
@@ -166,7 +166,7 @@ router
       });
       res.status(200).json(delUser);
     } catch (error) {
-      console.log(error);
+      
       res.status(404).json({
         error: true,
         message: error,
