@@ -13,11 +13,11 @@ router
     const { body } = req;
     timeStamp('POST on /users/login');
 
-    // TODO: Add validations
+   
     if (!body.username || !body.password) {
       return res.status(400).json({
         error: true,
-        message: 'El mensaje tiene campos vacios.',
+        message: 'Usuario o Contraseña inexistentes.',
       });
     }
 
@@ -28,7 +28,7 @@ router
     if (!user) {
       return res.status(400).json({
         error: true,
-        message: 'El mensaje tiene informacion equivocada.',
+        message: 'El usuario no esta registrado.',
       });
     }
 
@@ -67,7 +67,7 @@ router
     } else {
       return res.status(400).json({
         error: true,
-        message: 'Credenciales erroneas.',
+        message: 'Usuario inexistente.',
       });
     }
   })
@@ -78,7 +78,7 @@ router
     if (!body.username || !body.password || !body.email) {
       return res.status(400).json({
         error: true,
-        message: 'El mensaje tiene campos vacios .',
+        message: 'Existen campos vacios .',
       });
     }
 
@@ -175,11 +175,11 @@ router
   })
   .get('*', (req, res, next) => {
     timeStamp('GET on /users/*');
-    res.status(404).json({ error: true, message: 'Not Found!' });
+    res.status(404).json({ error: true, message: 'No encontrado!' });
   })
   .post('*', (req, res, next) => {
     timeStamp('POST on /users/*');
-    res.status(404).json({ error: true, message: 'Not Found!' });
+    res.status(404).json({ error: true, message: 'No encontrado!' });
   });
 
 export default router;
